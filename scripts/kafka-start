@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+export $(grep -v '^#' ./environment.properties | xargs)
+pwd=`pwd`
+grep='grep-ps.bash'
+cd ${zookeeper}/bin/
+./zkServer.sh start
+echo `${pwd}/${grep} quorum`
+sleep 10
+cd ${kafka}/bin/
+kafka-0-delete-data
+./kafka-server-start.sh -daemon ../config/server.properties
+sleep 20
+echo `${pwd}/${grep} kafka`
+./kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic flowing-retail
+cd ${pwd}

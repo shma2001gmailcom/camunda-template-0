@@ -16,9 +16,7 @@ public class RestAdapter implements JavaDelegate {
     private final RestTemplate rest;
     private final String url;
 
-    public RestAdapter(final RestTemplate rest,
-                       final @Value("${stripeChargeUrl}") String url
-    ) {
+    public RestAdapter(final RestTemplate rest, final @Value("${url}") String url) {
         this.rest = rest;
         this.url = url;
     }

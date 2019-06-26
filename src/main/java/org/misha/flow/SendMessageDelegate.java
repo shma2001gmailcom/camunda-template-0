@@ -15,8 +15,11 @@ import java.util.UUID;
 @Component
 class SendMessageDelegate implements JavaDelegate {
     private static final Logger log = LoggerFactory.getLogger(SendMessageDelegate.class);
-    @Autowired
-    private MessageSender messageSender;
+    private final MessageSender messageSender;
+
+    public SendMessageDelegate(MessageSender messageSender) {
+        this.messageSender = messageSender;
+    }
 
     @Override
     public void execute(DelegateExecution context) throws Exception {

@@ -1,13 +1,15 @@
-package org.misha;
+package org.misha.domain;
+
+import org.apache.commons.lang.builder.ToStringBuilder;
 
 import java.util.Date;
 import java.util.UUID;
 
-public class    Message<T> {
+public class Message<T> {
     private String messageType;
     private String id = UUID.randomUUID().toString();
     private String traceId = UUID.randomUUID().toString();
-    private String sender = "Order | Camunda";
+    private String sender = "Ca-Ka Message Sender";
     private Date timestamp = new Date();
     private String correlationId;
     private T payload;
@@ -15,14 +17,9 @@ public class    Message<T> {
     public Message() {
     }
 
-    public Message(String type, T payload) {
-        this.messageType = type;
-        this.payload = payload;
-    }
-
-    public Message(String type, String traceId, T payload) {
-        this.messageType = type;
-        this.traceId = traceId;
+    public Message(T payload) {
+        messageType = payload.getClass().getSimpleName();
+        correlationId = UUID.randomUUID().toString();
         this.payload = payload;
     }
 
@@ -30,9 +27,8 @@ public class    Message<T> {
         return messageType;
     }
 
-    public Message<T> setMessageType(String messageType) {
+    public void setMessageType(String messageType) {
         this.messageType = messageType;
-        return this;
     }
 
     public String getId() {
@@ -57,41 +53,45 @@ public class    Message<T> {
         return payload;
     }
 
-    public Message<T> setPayload(T payload) {
+    public void setPayload(T payload) {
         this.payload = payload;
-        return this;
     }
 
     public String getTraceId() {
         return traceId;
     }
 
-    public Message<T> setTraceId(String traceId) {
+    public void setTraceId(String traceId) {
         this.traceId = traceId;
-        return this;
     }
 
     public String getSender() {
         return sender;
     }
 
-    public Message<T> setSender(String sender) {
+    public void setSender(String sender) {
         this.sender = sender;
-        return this;
     }
 
     public String getCorrelationId() {
         return correlationId;
     }
 
-    public Message<T> setCorrelationId(String correlationId) {
+    public void setCorrelationId(String correlationId) {
         this.correlationId = correlationId;
-        return this;
     }
 
     @Override
     public String toString() {
-        return "Message [messageType=" + messageType + ", id=" + id + ", timestamp=" + timestamp + ", payload=" + payload + ", correlationId=" + correlationId + "]";
+        return new ToStringBuilder(this)
+                .append("messageType", messageType)
+                .append("id", id)
+                .append("traceId", traceId)
+                .append("sender", sender)
+                .append("timestamp", timestamp)
+                .append("correlationId", correlationId)
+                .append("payload", payload)
+                .toString();
     }
 }
 

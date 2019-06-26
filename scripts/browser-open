@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-export $(grep -v '^#' ./environment.properties | xargs)
-google-chrome ${flowing}/docs/overview-website/index.html

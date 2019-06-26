@@ -1,34 +1,32 @@
 package org.misha.flow;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 public class SendMessageContent {
     private String refId;
     private String reason;
-    private int amount;
 
     public String getRefId() {
         return refId;
     }
 
-    public SendMessageContent setRefId(String refId) {
+    public void setRefId(String refId) {
         this.refId = refId;
-        return this;
     }
 
     public String getReason() {
         return reason;
     }
 
-    public SendMessageContent setReason(String reason) {
+    public void setReason(String reason) {
         this.reason = reason;
-        return this;
     }
 
-    public int getAmount() {
-        return amount;
-    }
-
-    public SendMessageContent setAmount(int amount) {
-        this.amount = amount;
-        return this;
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("refId", refId)
+                .append("reason", reason)
+                .toString();
     }
 }

@@ -1,6 +1,7 @@
-package org.misha;
+package org.misha.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.apache.commons.lang.builder.ToStringBuilder;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,6 +22,8 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order [id=" + id + "]";
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .toString();
     }
 }

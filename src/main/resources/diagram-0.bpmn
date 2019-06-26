@@ -7,6 +7,9 @@
       <bpmn:messageEventDefinition messageRef="Message_1j2c91w" />
     </bpmn:startEvent>
     <bpmn:sendTask id="Task_1dpz6e0" name="Send Message" camunda:delegateExpression="#{sendMessageDelegate}">
+      <bpmn:extensionElements>
+        <camunda:executionListener class="org.misha.messages.MessageListener" event="start" />
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0cbcjn7</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_07y35q1</bpmn:outgoing>
     </bpmn:sendTask>

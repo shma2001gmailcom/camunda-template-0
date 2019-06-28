@@ -2,10 +2,11 @@ package org.misha.domain;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
-public class Message<T> {
+public class Message<T> implements Serializable {
     private String messageType;
     private String id = UUID.randomUUID().toString();
     private String traceId = UUID.randomUUID().toString();

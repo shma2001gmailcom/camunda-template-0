@@ -68,11 +68,6 @@
         <dependency>
             <groupId>org.camunda.bpm.springboot</groupId>
             <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
-            <!--
-                Adjust if you want to use Enterprise Edition of Camunda:
-                <artifactId>camunda-bpm-spring-boot-starter-webapp-ee</artifactId>
-                Make sure you also use an EE version of Camunda - see above
-            -->
             <version>${camunda.spring.boot.version}</version>
         </dependency>
         <dependency>
@@ -120,7 +115,7 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>io.flowing.retail.checkout.CheckoutApplication</mainClass>
+                    <mainClass>org.misha.Application</mainClass>
                 </configuration>
             </plugin>
             <plugin>

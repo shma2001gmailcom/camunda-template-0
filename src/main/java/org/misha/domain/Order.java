@@ -5,9 +5,10 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity(name = "OrderEntity")
-public class Order {
+public class Order implements Serializable {
     @Id
     protected String id;
 
